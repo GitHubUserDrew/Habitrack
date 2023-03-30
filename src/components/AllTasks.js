@@ -47,6 +47,10 @@ const AllTasks = () => {
 
   useEffect(() => {
     if (id) {
+      // Observe line 49.
+      // When it reads 'if (id)', this condition will never trigger.
+      // If we do 'if (1==1)' it will in fact trigger, and the dispatch will then work. 
+      console.log('condition met');
       dispatch(fetchAllTask(id));
     }
   }, [dispatch, id]);
