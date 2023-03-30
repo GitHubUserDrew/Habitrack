@@ -9,7 +9,7 @@ const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3>Welcome, {username}! How are you today?</h3>
     </div>
   );
 };

@@ -4,6 +4,7 @@ body {
 
 a {
   text-decoration: none;
+  /* background-color: red; */
 }
 
 label {
@@ -13,9 +14,58 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+
 }
 
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+
+
+.Navbar {
+  background-color: red;
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th {
+  padding: 1rem;
+  background-color: #f7f7f7;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.calendar td {
+  height: 100px;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+
+.calendar td:hover {
+  background-color: #f7f7f7;
+}
+
+.calendar .day-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.calendar .day-events {
+  margin-top: 0.5rem;
+}
+
+.calendar .event {
+  background-color: #6d9eeb;
+  color: #fff;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
 }

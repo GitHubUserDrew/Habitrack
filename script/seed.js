@@ -1,6 +1,7 @@
 'use strict'
 
-const {db, models: {User} } = require('../server/db')
+const { db, models: { User, Calendar, Task, Note } } = require('../server/db')
+
 
 /**
  * seed - this function clears the database, updates tables to
@@ -16,13 +17,76 @@ async function seed() {
     User.create({ username: 'murphy', password: '123' }),
   ])
 
-  console.log(`seeded ${users.length} users`)
+  // Creating Calendars
+  const calendar = await Promise.all([
+    Calendar.create({
+      id: 1,
+      title: 'event',
+      description: 'hello',
+      // start_date: 2022 - 01 - 03,
+      // end_date: 2022 - 01 - 05,
+      // start_time: 00 - 01,
+      // end_time: 00 - 02
+    }),
+    Calendar.create({
+      id: 2
+      , title: 'event1',
+      description: 'bye',
+      // start_date: 2022 - 01 - 06,
+      // end_date: 2022 - 01 - 08,
+      // start_time: 01 - 01,
+      // end_time: 02 - 02
+    }),
+  ])
+
+  //creating tasks
+  const task = await Promise.all([
+    Task.create({
+      id: 0,
+      title: 'dothis',
+      description: 'doit!',
+      status: "new",
+    }),
+    Task.create({
+      id: 1,
+      title: 'dothat',
+      description: 'doit!',
+      status: "new",
+    }),
+  ])
+
+ //creating notes
+ const note = await Promise.all([
+  Note.create({
+    id: 0,
+    title: 'whatup',
+    content: 'hello',
+  }),
+  Note.create({
+    id: 1,
+    title: 'whatdown',
+    content: 'goodbye'
+  }),
+])
+
   console.log(`seeded successfully`)
   return {
     users: {
       cody: users[0],
-      murphy: users[1]
-    }
+      murphy: users[1],
+    },
+    calendar: {
+      event1: calendar[0],
+      event2: calendar[1],
+    },
+    task: {
+      dothis: task[0],
+      dothat: task[1],
+    },
+    note: {
+      whatup: task[0],
+      whatdown: task[1],
+    },
   }
 }
 
@@ -32,6 +96,11 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
+  console.log(`seeded ${User.length} users`)
+
+  console.log(`seeded ${Calendar.length} Calendar`)
+  console.log(`seeded ${Task.length} Task`)
+  console.log(`seeded ${Note.length} Note`);
   console.log('seeding...')
   try {
     await seed()
