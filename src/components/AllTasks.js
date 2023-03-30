@@ -49,7 +49,9 @@ const AllTasks = () => {
     if (id) {
       // Observe line 49.
       // When it reads 'if (id)', this condition will never trigger.
-      // If we do 'if (1==1)' it will in fact trigger, and the dispatch will then work. 
+      // If we do 'if (1==1)' it will in fact trigger, and the dispatch will then work.
+      // I recommend you grab this from the store instead, as the store presently has an 'auth' section
+      // and that section verifies that we have the user logged in
       console.log('condition met');
       dispatch(fetchAllTask(id));
     }
