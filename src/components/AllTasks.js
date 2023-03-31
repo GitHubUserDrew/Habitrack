@@ -45,11 +45,24 @@ const AllTasks = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectAllTasks);
 
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchAllTask(id));
-    }
-  }, [dispatch, id]);
+    const myId = useSelector((state) => state.auth.me.id);
+    useEffect(() => {
+      console.log(myId, 'here is my id');
+
+      if (myId) {
+        // Observe line 49.
+        // When it reads 'if (id)', this condition will never trigger.
+        // If we do 'if (1==1)' it will in fact trigger, and the dispatch will then work.
+        // I recommend you grab this from the store instead, as the store presently has an 'auth' section
+        // and that section verifies that we have the user logged in
+
+        //  UPDATE: I added     const myId = useSelector((state) => state.auth.me.id);
+        //and I turned the 'if (id)' into 'if (myId)'.
+        //So now it works
+        console.log('If condition met');
+        dispatch(fetchAllTask(id));
+      }
+    }, [dispatch, id]);
 
   if (tasks.loading) {
     return <div>Loading...</div>;
