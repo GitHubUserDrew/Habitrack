@@ -13,7 +13,7 @@ const EditTask = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
-
+    const navigate = useNavigate();
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
     };
@@ -30,11 +30,11 @@ const EditTask = () => {
         e.preventDefault();
         const updatedTask = { id: taskId, title, description, status }
         dispatch(updateTask(updatedTask)).then(() => {
-            navigate('/');
+            navigate('/task');
         });
 
     };
-
+// 
     return (
         <div>
             <div>

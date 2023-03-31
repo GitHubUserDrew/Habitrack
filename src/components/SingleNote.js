@@ -28,7 +28,7 @@ export const SingleNote = ({ noteId }) => {
       <h2>{note.title}</h2>
       <p>{note.description}</p>
       <button onClick={handleDelete}>Delete</button>
-      <button onClick={handleEdit}>Edit</button>
+      {/* <button onClick={handleEdit}>Edit</button> */}
     </div>
   );
 };

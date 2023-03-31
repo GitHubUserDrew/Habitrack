@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchAllTask, selectAllTasks } from '../features/allTaskSlice';
+import { fetchAllTask, selectAllTasks, createTask } from '../features/allTaskSlice';
 import EditTask from './EditTask';
 import DeleteTask from './DeleteTask';
 
 const SingleTask = ({ task }) => {
-  const { title, description, status } = task || {};
+  const { id, title, description, status } = task || {};
   const dispatch = useDispatch();
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -18,22 +18,24 @@ const SingleTask = ({ task }) => {
     setShowEditForm(false);
   };
 
+
+
   if (!task) {
     return <div>No task found</div>;
   }
 
   return (
-    <div>
+    <div className="task">
       <h3>{title}</h3>
       <h4>{description}</h4>
       <h5>Status: {status}</h5>
       {showEditForm ? (
         <>
           <EditTask task={task} />
-          <button onClick={handleCancelClick}>Cancel</button>
+          <button className="task-cancel-btn" onClick={handleCancelClick}>Cancel</button>
         </>
       ) : (
-        <button onClick={handleEditClick}>Edit</button>
+        <button  className="task-edit-btn" onClick={handleEditClick}>Edit</button>
       )}
       <DeleteTask task={`${task.id}`} />
     </div>
@@ -41,15 +43,30 @@ const SingleTask = ({ task }) => {
 };
 
 const AllTasks = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("");
   const { id } = useParams();
   const dispatch = useDispatch();
   const tasks = useSelector(selectAllTasks);
+  const myId = useSelector((state) => state.auth.me.id);
+    useEffect(() => {
+      console.log(myId, 'here is my id');
 
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchAllTask(id));
-    }
-  }, [dispatch, id]);
+      if (myId) {
+        // Observe line 49.
+        // When it reads 'if (id)', this condition will never trigger.
+        // If we do 'if (1==1)' it will in fact trigger, and the dispatch will then work.
+        // I recommend you grab this from the store instead, as the store presently has an 'auth' section
+        // and that section verifies that we have the user logged in
+
+        //  UPDATE: I added     const myId = useSelector((state) => state.auth.me.id);
+        //and I turned the 'if (id)' into 'if (myId)'.
+        //So now it works
+        console.log('If condition met');
+        dispatch(fetchAllTask(id));
+      }
+    }, [dispatch, id]);
 
   if (tasks.loading) {
     return <div>Loading...</div>;
@@ -59,10 +76,50 @@ const AllTasks = () => {
     return <div>{tasks.error}</div>;
   }
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const handleAddTask = () => {
+    dispatch(createTask({ id, title, description, status }));
+    setTitle("");
+    setDescription("");
+    setStatus(""); 
+  };
+
   return (
-    <div>
+    <div className="AllTasks">
       <h1>Tasks</h1>
       <div>
+        <input
+          type="text"
+          value={title}
+          onChange={handleTitleChange}
+          placeholder="Enter a title"
+        />
+        <input
+          type="text"
+          value={description}
+          onChange={handleDescriptionChange}
+          placeholder="Enter a description"
+        />
+        <input
+          type="text"
+          value={status}
+          onChange={handleStatusChange}
+          placeholder="Enter between new, in_progress or completed"
+        />
+        <button onClick={handleAddTask}>Add New Task</button>
+      </div>
+      <div className= "task">
         {tasks.map((task) => (
           <SingleTask key={task.id} task={task} />
         ))}

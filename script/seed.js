@@ -45,13 +45,13 @@ async function seed() {
       id: 0,
       title: 'dothis',
       description: 'doit!',
-      status: "new",
+      status: 'new',
     }),
     Task.create({
       id: 1,
       title: 'dothat',
       description: 'doit!',
-      status: "new",
+      status: 'new',
     }),
   ])
 

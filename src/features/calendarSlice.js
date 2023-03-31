@@ -3,9 +3,9 @@ import axios from "axios";
 
 //id, title, description, start_date, end_date, start_time, end_time
 
-export const fetchEvents = createAsyncThunk("calendar/fetchEvents", async () => {
+export const fetchEvents = createAsyncThunk('calendar/fetchEvents', async () => {
     try {
-        const { data } = await axios.get("/api/events");
+        const { data } = await axios.get('/api/events');
         console.log(data);
         return data;
     } catch (err) {
@@ -13,13 +13,13 @@ export const fetchEvents = createAsyncThunk("calendar/fetchEvents", async () => 
     }
 });
 
-export const createEvent = createAsyncThunk("calendar/createEvent", async ({ id, title, description, }) => {
+export const createEvent = createAsyncThunk('calendar/createEvent', async ({ id, title, description, }) => {
     console.log("posted");
-    const { data } = await axios.post("/api/events", { id, title, description, });
+    const { data } = await axios.post('/api/events', { id, title, description, });
     return data;
 });
 
-export const updateEvent = createAsyncThunk("calendar/updateEvent", async (event) => {
+export const updateEvent = createAsyncThunk('calendar/updateEvent', async (event) => {
     try {
         const { id, title, description,  } = event;
         const updatedEvent = { id, title, description,  };
@@ -37,7 +37,7 @@ export const updateEvent = createAsyncThunk("calendar/updateEvent", async (event
     }
 });
 
-export const deleteEvent = createAsyncThunk("calendar/deleteEvent", async (id) => {
+export const deleteEvent = createAsyncThunk('calendar/deleteEvent', async (id) => {
         try {
             const { data } = await axios.delete(
                 `/api/events/${id}`
@@ -50,7 +50,7 @@ export const deleteEvent = createAsyncThunk("calendar/deleteEvent", async (id) =
 );
 
 export const calendarSlice = createSlice({
-    name: "calendar",
+    name: 'calendar',
     initialState: [],
     reducers: {},
     extraReducers: (builder) => {

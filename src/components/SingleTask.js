@@ -6,15 +6,15 @@ import DeleteTask from './DeleteTask';
 import EditTask from './EditTask';
 import {  fetchTask, selectTask } from '../features/singleTaskSlice' 
 
+// const myId = useSelector((state) => state.auth.me.id);
 
-
-const SingleTask = () => {
+const SingleTask = (task) => {
     const { id } = useParams();
-    console.log(id);
-    const tasks = useSelector(selectTask);
-    const task = tasks[0];
-    // const { title, description, status } = task || {};
     const dispatch = useDispatch();
+    const tasks = useSelector(selectTask)
+    const myId = useSelector((state) => state.auth.me.id);
+    //  const { title, description, status } = task ;
+  
     const [showEditForm, setShowEditForm] = useState(false);
 
     const handleEditClick = () => {
@@ -26,7 +26,9 @@ const SingleTask = () => {
     };
 
     useEffect(() => {
-      if (id) {
+      console.log(myId, 'here is my id');
+      if (myId) {
+        console.log('If condition met');
         dispatch(fetchTask(id));
       }
     }, [dispatch, id]);

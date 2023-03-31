@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchNote = createAsyncThunk("note", async (id) => {
+export const fetchNote = createAsyncThunk('note', async (id) => {
     try {
         const { data } = await axios.get(`/api/note/${id}`);
         console.log(data);
@@ -17,7 +17,7 @@ export const fetchNote = createAsyncThunk("note", async (id) => {
 //     return data;
 // });
 
-export const updateNote = createAsyncThunk("note/updateNote", async (Note) => {
+export const updateNote = createAsyncThunk('note/updateNote', async (Note) => {
     try {
         const { id, title, content } = Note;
         const updatedNote = { id, title, content};
@@ -34,7 +34,7 @@ export const updateNote = createAsyncThunk("note/updateNote", async (Note) => {
     }
 });
 
-export const deleteNote = createAsyncThunk("note/deleteNote", async (id) => {
+export const deleteNote = createAsyncThunk('note/deleteNote', async (id) => {
     try {
         const { data } = await axios.delete(
             `/api/note/${id}`
@@ -47,7 +47,7 @@ export const deleteNote = createAsyncThunk("note/deleteNote", async (id) => {
 );
 
 export const singleNoteSlice = createSlice({
-    name: "Note",
+    name: 'Note',
     initialState: [],
     reducers: {},
     extraReducers: (builder) => {

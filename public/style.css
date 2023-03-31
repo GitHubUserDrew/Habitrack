@@ -28,6 +28,146 @@ form div {
   background-color: red;
 }
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.footer div {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.AllTasks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.task {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.task > * {
+  box-sizing: border-box;
+  /* width: calc((100% - 60px) / 3); Display tasks in 3 columns */
+  padding: 20px;
+  border: 5px solid #333;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  text-align: center;
+  font-size: 20px;
+}
+
+
+.task {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.task h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.task h5 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.task button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* task-cancel-btn
+task-edit-btn */
+.task-edit-btn {
+  background-color: #4CAF50;
+}
+
+.task-edit-btn:hover {
+  background-color: #3e8e41;
+}
+
+.task-cancel-btn {
+  background-color: #f44336;
+}
+
+.task-cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+.note {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.note h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.note h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.note button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  color: blueviolet;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.note-delete-btn {
+  background-color:blue;
+}
+
+.note-delete-btn:hover {
+  background-color: red;
+}
+
+/*calendar*/
 .calendar {
   width: 100%;
   border-collapse: collapse;

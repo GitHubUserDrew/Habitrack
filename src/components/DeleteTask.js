@@ -11,7 +11,7 @@ const DeleteTask = (taskId) => {
     const navigate = useNavigate();
     // Handling the deletion of an existing task
     const handleTaskDelete = () => {
-        taskId.preventDefault();
+        // taskId.preventDefault();
         dispatch(deleteTask(taskId));
         navigate('/task');
     };
