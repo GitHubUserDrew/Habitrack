@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTask ,createTask } from '../features/allTaskSlice';
 
-const AddTask = () => {
+const AddTask = ({task}) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
     const dispatch = useDispatch('');
+    
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);

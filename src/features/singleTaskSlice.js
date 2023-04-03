@@ -20,10 +20,10 @@ export const fetchTask = createAsyncThunk('task', async (id) => {
 export const updateTask = createAsyncThunk('task/updateTask', async (Task) => {
     try {
         const { id, title, description, status } = Task;
-        const updatedEvent = { id, title, description, status };
+        const updatedTask = { id, title, description, status };
         const { data } = await axios.put(
             `/api/task/${id}`,
-            updatedEvent
+            updatedTask
         );
         if (data) {
             console.log(data)
@@ -62,7 +62,8 @@ export const singleTaskSlice = createSlice({
             return action.payload;
         });
         builder.addCase(deleteTask.fulfilled, (state, action) => {
-            return action.payload;
+            const deletedTaskId = action.payload.id;
+            return state.filter(task => task.id !== deletedTaskId)
         });
     },
 });

@@ -22,15 +22,14 @@ const SingleNote = ({ note }) => {
   };
 
 
-
   if (!note) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className="note">
-      <h2>{title}</h2>
-      <h3>{content}</h3>
+      <div className="note_name">{title}</div>
+      <div className="note_content">{content}</div>
       <button value={note.id} className="note-delete-button" onClick={handleDelete}>Delete</button>
       {/* <button onClick={handleEdit}>Edit</button> */}
     </div>
@@ -76,23 +75,25 @@ const AllNote = () => {
   };
 
   return (
-    <div>
+    <div className="notespage">
       <h2>Notes</h2>
-      <div>
-        <input
+      <br></br>
+      <div className="Notes">
+        <input className="title-edit"
           type="text"
           value={title}
           onChange={handleTitleChange}
           placeholder="Enter a title"
         />
-        <input
+        <input className ="content-edit"
           type="text"
           value={content}
           onChange={handleContentChange}
           placeholder="Enter some content"
         />
-        <button onClick={handleAddNote}>Add Note</button>
+        <button className="addnote" onClick={handleAddNote}>Add Note</button>
       </div>
+      <br></br> 
       {notes
         .slice()
         .reverse()

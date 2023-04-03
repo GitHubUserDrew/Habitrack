@@ -6,18 +6,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { fetchTask ,deleteTask } from '../features/singleTaskSlice';
 
 
-const DeleteTask = (taskId) => {
+const DeleteTask = ({task}) => {
+    const {id,title,description, status} = task
     const dispatch = useDispatch();
     const navigate = useNavigate();
     // Handling the deletion of an existing task
-    const handleTaskDelete = () => {
+    const handleTaskDelete = (id) => {
         // taskId.preventDefault();
-        dispatch(deleteTask(taskId));
+        dispatch(deleteTask(id));
         navigate('/task');
     };
     return (
         <div>
-            <button onClick={handleTaskDelete}>Delete Task</button>
+            <button value={task.id} onClick={handleTaskDelete}>Delete Task</button>
         </div>
     );
 };

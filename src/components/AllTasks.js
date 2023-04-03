@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchAllTask, selectAllTasks, createTask } from '../features/allTaskSlice';
+import { fetchAllTask, selectAllTasks, createTask, deleteTask } from '../features/allTaskSlice';
 import EditTask from './EditTask';
 import DeleteTask from './DeleteTask';
 
@@ -18,7 +18,9 @@ const SingleTask = ({ task }) => {
     setShowEditForm(false);
   };
 
-
+  const handleDelete = () => {
+    dispatch(deleteTask((id)));
+  };
 
   if (!task) {
     return <div>No task found</div>;
@@ -95,10 +97,14 @@ const AllTasks = () => {
     setStatus(""); 
   };
 
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
+  };
+
   return (
     <div className="AllTasks">
       <h1>Tasks</h1>
-      <div>
+      <div className="addtaskform">
         <input
           type="text"
           value={title}

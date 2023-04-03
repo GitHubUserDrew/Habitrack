@@ -24,7 +24,7 @@ app.use((req, res, next) => {
   if (path.extname(req.path).length) {
     const err = new Error('Not found')
     err.status = 404
-    next(err)
+    next(err) 
   } else {
     next()
   }

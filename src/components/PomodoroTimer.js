@@ -49,7 +49,10 @@ function PomodoroTimer() {
 
   return (
     <div>
-      <h1>{isBreak ? 'Break Time' : 'Work Time'}</h1>
+      <h1>Pomodoro Timer</h1>
+      <br></br>
+      <h2>{isBreak ? 'Break Time' : 'Work Time'}</h2>
+      <br></br>
       <div>
         <label htmlFor="work-time-input">Enter work time in minutes: </label>
         <input

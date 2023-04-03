@@ -14,6 +14,7 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
+  font-family: Georgia, serif;
 
 }
 
@@ -47,6 +48,7 @@ form div {
   text-align: center;
 }
 
+/* all task ppage stlying */
 .AllTasks {
   display: flex;
   flex-direction: column;
@@ -55,7 +57,7 @@ form div {
   height: 100%;
   width: 100%;
 }
-
+/* task styling  */
 .task {
   display: flex;
   flex-wrap: wrap;
@@ -128,49 +130,101 @@ task-edit-btn */
   background-color: #d32f2f;
 }
 
-.note {
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+/*  note page  */
+.notespage {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.note h2 {
-  font-size: 24px;
+.notespage h2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.Notes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.title-edit,
+.content-edit {
+  flex-basis: calc(50% - 10px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.title-edit {
+  margin-right: 10px;
+}
+
+.addnote {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addnote:hover {
+  background-color: #0057cc;
+}
+
+.note {
+
+  flex-basis: calc(33.33% - 10px);
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.note_name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  justify-self: center;
+}
+
+.note_content {
+  font-size: 16px;
+  line-height: 1.5;
   margin-bottom: 10px;
 }
 
-.note h3 {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.note button {
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  color: blueviolet;
+.note-delete-button {
+  padding: 5px 10px;
   font-size: 16px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.note-delete-btn {
-  background-color:blue;
+.note-delete-button:hover {
+  background-color: #c82333;
 }
 
-.note-delete-btn:hover {
-  background-color: red;
-}
+
 
 /*calendar*/
 .calendar {
   width: 100%;
   border-collapse: collapse;
+  margin-left: 351px;
+ 
 }
 
 .calendar th {
@@ -209,3 +263,217 @@ task-edit-btn */
   font-size: 0.9rem;
   border-radius: 4px;
 }
+
+/* timer page  */
+.timerpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#timerH1 {
+  font-size: 32px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 16px;
+}
+
+#time {
+  font-size: 72px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 16px;
+}
+
+#timerlabel {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  margin-right: 10px;
+}
+
+input[type=number] {
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+#start-timer-button {
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  color: black;
+  background-color: red;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#start-timer-button:hover {
+  opacity: 0.8;
+}
+/* end of timer */
+/* stopWatch page */
+
+#stopwatchpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#clocktime {
+  font-size: 3rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+button {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+#start-stopwatch {
+  background-color: green;
+  color: white;
+}
+
+#start-stopwatch:hover {
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+#pause-stopwatch {
+  background-color: blue;
+  color: white;
+}
+
+#pause-stopwatch:hover {
+  background-color: lightblue;
+  cursor: pointer;
+}
+
+#reset-stopwatch {
+  background-color: red;
+  color: white;
+}
+
+#reset-stopwatch:hover {
+  background-color: tomato;
+  cursor: pointer;
+}
+
+#stopwatchpage > div {
+  text-align: center;
+}
+/* end of stopwatch */
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.my-element {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #999 #eee;
+}
+
+.my-element::-webkit-scrollbar-thumb {
+  background-color: #999;
+}
+
+.my-element::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+
+/* end of scrollbar */
+
+/* account.css */
+
+/* account.css */
+
+#accountMainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#changeUsername,
+#changePassword,
+#saveUsername,
+#savePassword,
+button[type="button"] {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#changeUsername,
+#changePassword {
+  background-color: green;
+  color: white;
+}
+
+#saveUsername,
+#savePassword {
+  background-color: goldenrod;
+  color: white;
+}
+
+button[type="button"] {
+  background-color: red;
+  color: white;
+}
+
+#logoutBtn {
+  background-color: blue;
+  color: white;
+}
+
+#labelUser,
+#labelPass,
+#labelLogout {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+#inputUser,
+#comfirmUser,
+#inputPass,
+#comfirmPass {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#inputUser,
+#comfirmUser {
+  width: 200px;
+}
+
+#inputPass,
+#comfirmPass {
+  width: 250px;
+}
+
+#saveUsername,
+#handleCancelClick,
+#savePassword,
+#handlePassCancelClick {
+  padding: 10px 30px;
+}
+
+

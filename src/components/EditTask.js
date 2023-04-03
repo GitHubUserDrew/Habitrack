@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 // import { fetchTask, createTask, updateTask, deleteTask, selectTask } from './taskSlice';
 import { fetchTask, updateTask, selectTask } from '../features/singleTaskSlice';
 
-const EditTask = () => {
+const EditTask = ({task}) => {
 
     const dispatch = useDispatch();
     const { taskId } = useParams();
@@ -49,7 +49,7 @@ const EditTask = () => {
                 <label>Status:</label>
                 <input type="text" value={status} onChange={handleStatusChange} />
             </div>
-            <button onClick={handleTaskUpdate}>Save</button>
+            <button value={task.id} onClick={handleTaskUpdate}>Save</button>
         </div>
     )
 }

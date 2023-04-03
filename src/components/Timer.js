@@ -34,12 +34,17 @@ function Timer() {
   }
 
   return (
-    <div>
-      <h2>{time}</h2>
+    <div className="timerpage">
+      <h1 id="timerH1" >Timer</h1>
+      <br></br>
+      <h2 id= "time">{time}</h2>
+      <br></br>
+      <h3> </h3>
       {intervalId === null && (
         <div>
-          <input type="number" value={inputTime} onChange={handleInputChange} />
-          <button onClick={startTimer}>Start Timer</button>
+          <label id="timerlabel" htmlFor="timedisplay">Please enter time and press start button.</label>
+          <input id="timedisplay" type="number" value={inputTime} onChange={handleInputChange} />
+          <button id="start-timer-button" onClick={startTimer}>Start Timer</button>
         </div>
       )}
     </div>

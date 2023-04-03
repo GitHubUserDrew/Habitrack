@@ -31,7 +31,17 @@ export const createTask = createAsyncThunk(
     }
 );
 
-
+export const deleteTask = createAsyncThunk('task/deleteTask', async (id) => {
+  try {
+      const { data } = await axios.delete(
+          `/api/task/${id}`
+      );
+      return data;
+  } catch (err) {
+      console.log(err);
+  }
+}
+);
 
 export const allTaskSlice = createSlice({
     name: 'allTask',
@@ -47,9 +57,10 @@ export const allTaskSlice = createSlice({
       // builder.addCase(updateTask.fulfilled, (state, action) => {
       //     return action.payload;
       // });
-      // builder.addCase(deleteTask.fulfilled, (state, action) => {
-      //     return action.payload;
-      // });
+      builder.addCase(deleteTask.fulfilled, (state, action) => {
+        const deletedTaskId = action.payload.id;
+        return state.filter(task => task.id !== deletedTaskId)
+      });
     },
   });
 

@@ -40,15 +40,22 @@ function Stopwatch() {
   };
 
   return (
-    <div>
-      <div>{formatTime(elapsedTime)}</div>
+    <div id="stopwatchpage">
+      <h2>Stop Watch</h2>
+       <div>
+        <br></br>
+      <div id="clocktime">{formatTime(elapsedTime)}</div>
+      <br></br>
+      <h3>Please press start to began StopWatch </h3>
+      <br></br>
       {!isRunning && (
-        <button onClick={handleStart}>Start</button>
+        <button id="start-stopwatch" onClick={handleStart}>Start</button>
       )}
       {isRunning && (
-        <button onClick={handlePause}>Pause</button>
+        <button id="pause-stopwatch" onClick={handlePause}>Pause</button>
       )}
-      <button onClick={handleReset}>Reset</button>
+      <button id="reset-stopwatch" onClick={handleReset}>Reset</button>
+         </div>
     </div>
   );
 }
